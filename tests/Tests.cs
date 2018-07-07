@@ -9,7 +9,7 @@ namespace Tests
         [TestMethod]
         public void CreatePopulateAndReadFromTestTable()
         {
-            var db = new netstandardDbSQLiteHelper.Database(@"C:\users\ncollier\desktop\test.db");
+            var db = new netstandardDbSQLiteHelper.Database(@"C:\temp\test.db");
 
             db.Command(@"
                 drop table if exists test;
@@ -37,7 +37,7 @@ namespace Tests
                 from test
             ");
 
-            
+
             Assert.IsTrue(string.Equals(dt[0]["val2"] as string, "Happy Birthday!", StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(string.Equals(dt[0]["val3"], "8"));
 
