@@ -11,11 +11,6 @@ namespace netstandardDbSQLiteHelper
 
         public Database(string databaseFilePath)
         {
-            if(string.IsNullOrWhiteSpace(databaseFilePath))
-            {
-                throw new Exception("Database file path is empty");
-            }
-
             this.connectionString = Utility.GetConnectionString(databaseFilePath);
         }
 
