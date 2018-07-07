@@ -1,4 +1,4 @@
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System;
 
@@ -13,18 +13,18 @@ namespace netstandardDbSQLiteHelper{
 
         public static void useSQLiteCommand(string connectionString,
                                 string commandText,
-                                Action<SQLiteCommand> funcToRunOnCommand,
+                                Action<SqliteCommand> funcToRunOnCommand,
                                 Dictionary<string,object> parameters = null)
         {
-            using (var sqlconn = new SQLiteConnection(connectionString))
+            using (var sqlconn = new SqliteConnection(connectionString))
             {
-                var cmd = new SQLiteCommand(commandText, sqlconn);
+                var cmd = new SqliteCommand(commandText, sqlconn);
 
                 if( parameters != null && parameters.Count > 0)
                 {
                     foreach(var e in parameters)
                     {
-                        cmd.Parameters.Add(new SQLiteParameter(e.Key, e.Value));
+                        cmd.Parameters.Add(new SqliteParameter(e.Key, e.Value));
                     }
                 }
 

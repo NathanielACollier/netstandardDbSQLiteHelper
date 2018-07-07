@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
 
 namespace netstandardDbSQLiteHelper
 {
@@ -16,14 +16,7 @@ namespace netstandardDbSQLiteHelper
                 throw new Exception("Database file path is empty");
             }
 
-            if(!System.IO.File.Exists(databaseFilePath))
-            {
-                SQLiteConnection.CreateFile(databaseFilePath);
-            }
-
             this.connectionString = Utility.GetConnectionString(databaseFilePath);
-
-
         }
 
         public int Command(string commandText, Dictionary<string, object> parameters = null)
@@ -44,21 +37,27 @@ namespace netstandardDbSQLiteHelper
 
 
 
-        public DataTable Query(string queryText, Dictionary<string, object> parameters = null)
+        public List<Dictionary<string,object>> Query(string queryText, Dictionary<string, object> parameters = null)
         {
-            var dt = new DataTable();
+            var rows = new List<Dictionary<string,object>>();
 
             Utility.useSQLiteCommand(connectionString: connectionString,
                 commandText: queryText,
                 parameters: parameters,
                 funcToRunOnCommand: (cmd) =>
                 {
-                    var da = new SQLiteDataAdapter(cmd);
+                    cmd.Connection.Open();
+                    var reader = cmd.ExecuteReader();
 
-                    da.Fill(dt);
+                    while( reader.Read()){
+                        var dict = Enumerable.Range(0, reader.FieldCount)
+                                    .ToDictionary(reader.GetName, reader.GetValue);
+                        
+                        rows.Add(dict);
+                    }
+                    cmd.Connection.Close();
                 });
-
-            return dt;
+            return rows;
         }
 
     }

@@ -18,7 +18,7 @@ namespace netstandardDbSQLiteHelper{
                 { "@table_name", tableName }
             });
 
-            return t.Rows.Count > 0;
+            return t.Count() > 0;
         }
     }
 
