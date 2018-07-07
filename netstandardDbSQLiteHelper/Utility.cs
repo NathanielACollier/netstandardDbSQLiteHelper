@@ -5,9 +5,13 @@ using System;
 namespace netstandardDbSQLiteHelper{
         public static class Utility
     {
+
+        
         public static string GetConnectionString(string filePath)
         {
-            return $"Data Source={filePath}; datetimeFormat=CurrentCulture;";
+            return ""+new SqliteConnectionStringBuilder{
+                DataSource = !string.IsNullOrWhiteSpace(filePath) ? filePath : ":memory:"   
+            };
         }
 
 
