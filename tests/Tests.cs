@@ -10,7 +10,7 @@ namespace Tests
         [TestMethod]
         public void CreatePopulateAndReadFromTestTable()
         {
-            var db = new netstandardDbSQLiteHelper.Database(@"C:\temp\test.db");
+            var db = new netstandardDbSQLiteHelper.Database(@"test.db");
 
             db.Command(@"
                 drop table if exists test;
