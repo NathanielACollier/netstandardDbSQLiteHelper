@@ -12,6 +12,7 @@ namespace netstandardDbSQLiteHelper
         public Database(string databaseFilePath)
         {
             this.connectionString = Utility.GetConnectionString(databaseFilePath);
+
         }
 
         public int Command(string commandText, Dictionary<string, object> parameters = null)

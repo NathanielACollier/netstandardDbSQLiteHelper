@@ -1,6 +1,7 @@
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System;
+using System.IO;
 
 namespace netstandardDbSQLiteHelper{
         public static class Utility
@@ -9,9 +10,31 @@ namespace netstandardDbSQLiteHelper{
         
         public static string GetConnectionString(string filePath)
         {
+            filePath = ensureDatabaseFileExistsIfNotBlank(filePath);
             return ""+new SqliteConnectionStringBuilder{
                 DataSource = !string.IsNullOrWhiteSpace(filePath) ? filePath : ":memory:"   
             };
+        }
+
+
+        static public string ensureDatabaseFileExistsIfNotBlank(string databaseFileName)
+        {
+            if(!string.IsNullOrWhiteSpace(databaseFileName) &&
+                !System.IO.File.Exists(databaseFileName)
+                )
+            {
+                if(databaseFileName.StartsWith("~/", StringComparison.OrdinalIgnoreCase))
+                {
+                    databaseFileName = databaseFileName.Substring(2); // take out the first two chars
+                    string homeFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                    databaseFileName = System.IO.Path.Combine(homeFolder, databaseFileName);
+                }
+                FileStream fs = File.Create(databaseFileName);
+                fs.Close();
+            }
+
+            return databaseFileName;
+
         }
 
 
