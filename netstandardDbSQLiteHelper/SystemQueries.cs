@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace netstandardDbSQLiteHelper{
+namespace NC.Utilities.SQLite
+{
     public static class SystemQueries
     {
         public static bool doesTableExist(Database db, string tableName)

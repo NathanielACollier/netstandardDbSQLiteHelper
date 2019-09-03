@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 
-namespace netstandardDbSQLiteHelper{
-        public static class Utility
+namespace NC.Utilities.SQLite
+{
+    public static class Utility
     {
 
-        
         public static string GetConnectionString(string filePath)
         {
             filePath = ensureDatabaseFileExistsIfNotBlank(filePath);

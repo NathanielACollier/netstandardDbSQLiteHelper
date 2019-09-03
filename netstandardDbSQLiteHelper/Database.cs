@@ -3,7 +3,7 @@ using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace netstandardDbSQLiteHelper
+namespace NC.Utilities.SQLite
 {
     public class Database
     {
