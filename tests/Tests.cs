@@ -10,7 +10,7 @@ namespace Tests
         [TestMethod]
         public void CreatePopulateAndReadFromTestTable()
         {
-            var db = new NC.Utilities.SQLite.Database(@"~/Desktop/temp/test.db");
+            var db = new nac.Database.SQLite.Database(@"~/Desktop/temp/test.db");
 
             db.Command(@"
                 drop table if exists test;
@@ -48,7 +48,7 @@ namespace Tests
 
         [TestMethod]
         public void TestInMemory(){
-            var db = new NC.Utilities.SQLite.Database(null);
+            var db = new nac.Database.SQLite.Database(null);
 
             db.Command(@"
                 create table if not exists m1(

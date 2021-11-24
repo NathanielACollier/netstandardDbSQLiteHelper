@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace NC.Utilities.SQLite
+namespace nac.Database.SQLite
 {
     public static class SystemQueries
     {

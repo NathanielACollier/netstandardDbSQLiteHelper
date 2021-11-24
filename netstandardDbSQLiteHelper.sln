@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NC.Utilities.SQLite", "NC.Utilities.SQLite\NC.Utilities.SQLite.csproj", "{BC751065-E6D4-45DE-AC77-15ED561C8048}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nac.Database.SQLite", "nac.Database.SQLite\nac.Database.SQLite.csproj", "{BC751065-E6D4-45DE-AC77-15ED561C8048}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{BB0B23F4-7605-450C-A283-F8E73430C21D}"
 EndProject
