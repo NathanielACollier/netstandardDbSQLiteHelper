@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.1.0</PackageVersion>
     <Authors>Nathaniel Collier</Authors>
     <Description>Manages working with sqlite database files</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SQLite" Version="2.2.6" />
+    <PackageReference Include="Microsoft.Data.SQLite" Version="6.0.8" />
   </ItemGroup>
 
 </Project>
